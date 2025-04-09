@@ -54,3 +54,4 @@ websocket-client==1.8.0
 websockets==14.0
 wsproto==1.2.0
 matplotlib==3.8.4
+scikit-learn==1.4.2
