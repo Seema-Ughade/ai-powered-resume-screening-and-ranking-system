@@ -34,7 +34,7 @@ The **Resume Ranking System** is an AI-driven tool designed to simplify and opti
 ### Clone the Repository
 ```bash
 git clone https://github.com/rutikakengal/AI-Resume-Screening-And-System-Ranking.git
-cd AI-Resume-Screening-And-System-Ranking
+cd ai-powered-resume-screening-and-ranking-system
 ```
 
 ### Install Dependencies
