@@ -33,7 +33,7 @@ The **Resume Ranking System** is an AI-driven tool designed to simplify and opti
 ## 🏗️ Installation & Setup
 ### Clone the Repository
 ```bash
-git clone https://github.com/rutikakengal/AI-Resume-Screening-And-System-Ranking.git
+git clone https://github.com/Seema-Ughade/ai-powered-resume-screening-and-ranking-system.git
 cd ai-powered-resume-screening-and-ranking-system
 ```
 
@@ -62,8 +62,8 @@ streamlit run app.py
 Contributions are welcome! Feel free to fork this repo and submit a pull request.
 
 ## 🔗 Connect With Me
-- **GitHub:** [rutikakengal](https://github.com/rutikakengal)
-- **LinkedIn:** [rutikakengal](www.linkedin.com/in/rutika-kengal-b3b0a22b7)
+- **GitHub:** [rutikakengal](https://github.com/Seema-Ughade)
+- **LinkedIn:** [rutikakengal]( linkedin.com/in/seema-ughade-1b66b420b/)
 
 ---
 🚀 **Transform your hiring process with AI-powered resume ranking!**
