@@ -393,18 +393,19 @@ def generate_resume_tips(score, resume_text, job_description):
     
     return tips
 
-# Function to create a downloadable CSV file (instead of Excel)
-def to_csv(df):
+# Function to create a downloadable Excel file
+def to_excel(df):
     output = BytesIO()
-    df.to_csv(output, index=False)
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, sheet_name='Resume Rankings', index=False)
     processed_data = output.getvalue()
     return processed_data
 
 # Function to create download link
-def get_download_link(df, filename="resume_rankings.csv"):
-    val = to_csv(df)
+def get_download_link(df, filename="resume_rankings.xlsx"):
+    val = to_excel(df)
     b64 = base64.b64encode(val).decode()
-    return f'<a href="data:text/csv;base64,{b64}" download="{filename}">Download CSV file</a>'
+    return f'<a href="data:application/octet-stream;base64,{b64}" download="{filename}">Download Excel file</a>'
 
 # Main layout
 tab1, tab2 = st.tabs(["📤 Upload & Analyze", "📋 Instructions"])
@@ -426,9 +427,8 @@ with tab1:
         col_a, col_b = st.columns([1, 1])
         with col_a:
             if st.button("Load Sample Job Description"):
-                # Use session state instead of experimental_rerun
-                st.session_state.job_description = sample_job_description
                 job_description = sample_job_description
+                st.experimental_rerun()
         st.markdown('</div>', unsafe_allow_html=True)
     
     # Analysis process
@@ -588,8 +588,7 @@ with tab1:
                         plot_bgcolor="white",
                         font=dict(color="#1f2937")
                     )
-                    # FIX: Add a unique key to the plotly_chart
-                    st.plotly_chart(fig, use_container_width=True, key="main_chart")
+                    st.plotly_chart(fig, use_container_width=True)
                 
                 # Display results table
                 st.subheader("📋 Detailed Results")
@@ -607,7 +606,7 @@ with tab1:
                 )
                 st.markdown('</div>', unsafe_allow_html=True)
                 
-                # Download button (using CSV instead of Excel)
+                # Download button
                 st.markdown(get_download_link(results_df), unsafe_allow_html=True)
                 
                 # Detailed analysis for each resume
@@ -629,7 +628,7 @@ with tab1:
                         
                         with col2:
                             # Create a gauge chart for the score
-                            gauge_fig = go.Figure(go.Indicator(
+                            fig = go.Figure(go.Indicator(
                                 mode="gauge+number",
                                 value=row["Match Score (%)"],
                                 domain={'x': [0, 1], 'y': [0, 1]},
@@ -651,15 +650,14 @@ with tab1:
                                 }
                             ))
                             
-                            gauge_fig.update_layout(
+                            fig.update_layout(
                                 height=250,
                                 margin=dict(l=20, r=20, t=30, b=20),
                                 paper_bgcolor="white",
                                 font=dict(color="#1f2937")
                             )
                             
-                            # FIX: Add a unique key to each gauge chart
-                            st.plotly_chart(gauge_fig, use_container_width=True, key=f"gauge_chart_{i}")
+                            st.plotly_chart(fig, use_container_width=True)
 
 with tab2:
     st.markdown("""
@@ -682,7 +680,7 @@ with tab2:
     - Check individual resume analysis for improvement tips
     
     ### Step 4: Export Results
-    - Download the results as a CSV file for further analysis
+    - Download the results as an Excel file for further analysis
     
     ### How It Works
     
