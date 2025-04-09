@@ -428,7 +428,8 @@
 #         with col_a:
 #             if st.button("Load Sample Job Description"):
 #                 job_description = sample_job_description
-#                 st.experimental_rerun()
+#                 st.rerun()
+
 #         st.markdown('</div>', unsafe_allow_html=True)
     
 #     # Analysis process
