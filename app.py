@@ -1310,6 +1310,8 @@ with tab2:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #6b7280; font-size: 0.8rem;">
-    © 2023 Resume Ranking System | Built with Streamlit
+    © 2025 Resume Ranking System | Built with Streamlit
 </div>
 """, unsafe_allow_html=True)
+
+print("Resume Ranking System is running successfully!")
