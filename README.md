@@ -29,6 +29,7 @@ The **Resume Ranking System** is an AI-driven tool designed to simplify and opti
 
 ### Resume Ranking Results
 ![Resume Ranking](./screenshots/screening.png)
+![Resume Ranking](./screenshots/screening2.png)
 
 ## 🏗️ Installation & Setup
 ### Clone the Repository
